@@ -7,7 +7,7 @@ Example:
     python export_onnx.py \
         --model-type mattingrefine \
         --model-checkpoint "PATH_TO_MODEL_CHECKPOINT" \
-        --model-backbone resnet50 \
+        --model-backbone mobilenetv2 \
         --model-backbone-scale 0.25 \
         --model-refine-mode sampling \
         --model-refine-sample-pixels 80000 \

@@ -98,16 +98,12 @@ precision = {'float32': torch.float32, 'float16': torch.float16}[args.precision]
 model.eval().to(precision).to(args.device)
 
 # Dummy Inputs
-src = torch.randn(2, 3, 1080, 1920).to(precision).to(args.device)
-bgr = torch.randn(2, 3, 1080, 1920).to(precision).to(args.device)
+src = torch.randn(2, 3, 720, 1080).to(precision).to(args.device)
+bgr = torch.randn(2, 3, 720, 1080).to(precision).to(args.device)
 
 # Export ONNX
-if args.model_type == 'mattingbase':
-    input_names=['src', 'bgr']
-    output_names = ['pha', 'fgr', 'err', 'hid']
-if args.model_type == 'mattingrefine':
-    input_names=['src', 'bgr']
-    output_names = ['pha', 'fgr', 'pha_sm', 'fgr_sm', 'err_sm', 'ref_sm']
+input_names=['src', 'bgr']
+output_names = ['pha', 'fgr']
 
 torch.onnx.export(
     model=model,
